@@ -5,8 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:show_hide_password/show_hide_password.dart';
 
-class Reg extends StatelessWidget{
+class Reg extends StatefulWidget{
   const Reg({super.key});
+
+  @override
+  State<Reg> createState() => _RegState();
+}
+
+class _RegState extends State<Reg> {
+
+  bool _isHidden=true;
 
   @override
   Widget build(BuildContext context) {
@@ -132,8 +140,16 @@ class Reg extends StatelessWidget{
                     fillColor: Colors.white10,
                     focusedBorder: border,
                     enabledBorder: border,
+                    suffix: InkWell(
+                      onTap: _togglePasswordView,
+                      child: Icon(
+                        _isHidden
+                        ? Icons.visibility
+                        : Icons.visibility_off
+                      ),
+                    )
                   ),
-                  obscureText: true,
+                  obscureText: _isHidden,
                 ) ,
               ),
               Padding(
@@ -162,6 +178,9 @@ class Reg extends StatelessWidget{
       ),
     );
   }
-
-
+  void _togglePasswordView(){
+    setState(() {
+      _isHidden=!_isHidden;
+    });
+  }
 }
