@@ -1,6 +1,8 @@
 # assignment1
 
 A new Flutter project.
+It is an assignment of CSE2100.
+The assignment is to build a login and registration page using flutter and also use getX for state management
 
 ## Getting Started
 
